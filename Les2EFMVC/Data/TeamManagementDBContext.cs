@@ -4,12 +4,16 @@ using Microsoft.EntityFrameworkCore;
 namespace Les2EFMVC.Data
 {
     public class TeamManagementDBContext : DbContext {
-        public DbSet<Member> Members { get; set; }
-        public DbSet<Team> Teams { get; set; }
+        public TeamManagementDBContext(DbContextOptions<TeamManagementDBContext> options) : base(options) {
+        }
+
+        public DbSet<Member> Members { get; set; } = null!;
+        public DbSet<Team> Teams { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-            optionsBuilder.UseSqlServer(
-                @"Server=(localdb)\MSSQLLocalDB;Database=TeamManagementEF;Trusted_Connection=True;");
+            // 
+            //optionsBuilder.UseSqlServer(
+            //    @"Server=(localdb)\MSSQLLocalDB;Database=TeamManagementEF;Trusted_Connection=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {

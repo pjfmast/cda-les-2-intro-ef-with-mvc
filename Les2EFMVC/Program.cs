@@ -6,6 +6,9 @@ string connectionString = builder.Configuration.GetConnectionString("DefaultConn
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// Add a DBContext to the container,
+// see also: https://stackoverflow.com/questions/68980778/config-connection-string-in-net-core-6
 builder.Services.AddDbContext<TeamManagementDBContext>(
     options => options.UseSqlServer(connectionString));
 
