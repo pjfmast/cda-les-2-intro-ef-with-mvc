@@ -7,6 +7,7 @@ namespace Les2EFMVC.Data
         public TeamManagementDBContext(DbContextOptions<TeamManagementDBContext> options) : base(options) {
         }
 
+        // Define the entities we map to the database:
         public DbSet<Member> Members { get; set; } = null!;
         public DbSet<Team> Teams { get; set; } = null!;
 
@@ -17,6 +18,11 @@ namespace Les2EFMVC.Data
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
+
+            modelBuilder.Entity<Member>()
+                .Property(m => m.Name)
+                .IsRequired();
+
             modelBuilder.Entity<Member>().HasData(
                 new Member { Id = 1001, Name = "Henk", Email = "henk@breda.nl", TeamId = 201 },
                 new Member { Id = 1002, Name = "Loes", Email = "loes@avans.nl", TeamId = 201 },

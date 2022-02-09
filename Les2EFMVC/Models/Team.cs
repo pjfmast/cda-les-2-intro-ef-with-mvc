@@ -7,6 +7,6 @@
         public string Group { get; set; } = null!;
         public string Title { get; set; } = null!;
 
-        public ICollection<Member> Enrolled { get; } = null!;
+        public ICollection<Member> Enrolled { get; } = new List<Member>();
     }
 }
