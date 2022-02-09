@@ -36,6 +36,8 @@ namespace Les2EFMVC.Controllers
             }
 
             var team = await _context.Teams
+                .Include(m => m.Enrolled)
+                .AsNoTracking()
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (team == null)
             {
